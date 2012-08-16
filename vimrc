@@ -4,7 +4,6 @@ set cindent
 set autoindent
 
 set background=dark
-colorscheme torte
 
 set autoindent                    "Preserve current indent on new lines
 " set textwidth=78                  "Wrap at this column
@@ -67,3 +66,6 @@ nmap <s-tab> ^i<bs><esc>
 " cut or copy some text from one window and paste it in Vim.
 set pastetoggle=<F11>
 set diffopt+=iwhite
+" colorscheme
+colorscheme black_angus
+
