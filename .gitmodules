@@ -1,0 +1,15 @@
+[submodule "bundle/colorschemes"]
+	path = bundle/colorschemes
+	url = git@github.com:flazz/vim-colorschemes.git
+[submodule "bundle/gnupg.vim"]
+	path = bundle/gnupg.vim
+	url = git://github.com/vim-scripts/gnupg.vim.git
+[submodule "bundle/view_diff"]
+	path = bundle/view_diff
+	url = git://github.com/vim-scripts/view_diff.git
+[submodule "bundle/vim-markdown"]
+	path = bundle/vim-markdown
+	url = git://github.com/plasticboy/vim-markdown.git
+[submodule "bundle/vim-puppet"]
+	path = bundle/vim-puppet
+	url = git://github.com/rodjek/vim-puppet.git
