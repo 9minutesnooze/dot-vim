@@ -69,3 +69,5 @@ set diffopt+=iwhite
 " colorscheme
 colorscheme black_angus
 
+set laststatus=2
+let g:Powerline_symbols = 'fancy'
