@@ -67,7 +67,7 @@ nmap <s-tab> ^i<bs><esc>
 set pastetoggle=<F11>
 set diffopt+=iwhite
 " colorscheme
-colorscheme black_angus
+colorscheme ir_black
 
 set laststatus=2
 let g:Powerline_symbols = 'fancy'
