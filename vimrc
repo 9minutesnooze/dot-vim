@@ -29,6 +29,9 @@ filetype plugin on
 "reread .vimrc file after editing
 autocmd BufWritePost $HOME/.vimrc source $HOME/.vimrc
 
+" Treat JSON files like JavaScript
+" autocmd BufNewFile,BufRead *.json set ft=javascript
+
 " use visual bell instead of beeping
 set vb
 
@@ -71,3 +74,7 @@ colorscheme ir_black
 
 set laststatus=2
 let g:Powerline_symbols = 'fancy'
+
+set listchars=tab:»·,trail:·
+set list
+
