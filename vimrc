@@ -76,7 +76,9 @@ colorscheme ir_black
 set laststatus=2
 let g:Powerline_symbols = 'fancy'
 
-set listchars=tab:»·,trail:·
+if version > 702
+  set listchars=tab:»·,trail:·
+endif
 set list
 
 set guifont=Monaco:h14
