@@ -31,6 +31,9 @@
 [submodule "bundle/tabular"]
 	path = bundle/tabular
 	url = git://github.com/godlygeek/tabular.git
-[submodule "bundle/vim-markdown-preview"]
-	path = bundle/vim-markdown-preview
-	url = git://github.com/maba/vim-markdown-preview.git
+#[submodule "bundle/vim-markdown-preview"]
+#	path = bundle/vim-markdown-preview
+#	url = git://github.com/maba/vim-markdown-preview.git
+#[submodule "bundle/vim-json"]
+#	path = bundle/vim-json
+#	url = https://github.com/jakar/vim-json.git

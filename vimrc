@@ -3,6 +3,7 @@ syntax on
 set nu "Absolute line numbers
 set cindent
 set autoindent
+set cursorline
 
 set background=dark
 
@@ -31,7 +32,7 @@ filetype plugin on
 autocmd BufWritePost $HOME/.vimrc source $HOME/.vimrc
 
 " Treat JSON files like JavaScript
-autocmd BufNewFile,BufRead *.json set ft=javascript
+" autocmd BufNewFile,BufRead *.json set ft=javascript
 
 " use visual bell instead of beeping
 set vb
