@@ -37,3 +37,12 @@
 #[submodule "bundle/vim-json"]
 #	path = bundle/vim-json
 #	url = https://github.com/jakar/vim-json.git
+[submodule "bundle/syntastic"]
+	path = bundle/syntastic
+	url = git@github.com:scrooloose/syntastic.git
+[submodule "bundle/vim-rubocop"]
+	path = bundle/vim-rubocop
+	url = https://github.com/ngmy/vim-rubocop
+[submodule "bundle/vim-instant-markdown"]
+	path = bundle/vim-instant-markdown
+	url = git@github.com:suan/vim-instant-markdown.git

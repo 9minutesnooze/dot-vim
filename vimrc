@@ -4,6 +4,7 @@ set nu "Absolute line numbers
 set cindent
 set autoindent
 set cursorline
+"set cursorcolumn
 
 set background=dark
 
@@ -25,6 +26,13 @@ set iskeyword+=:                  "Perl double colons are valid part of
 " set number
 
 set statusline=%<%f%h%m%r%=%{&ff}\ %l,%c%V\ %P
+set statusline+=%#warningmsg#
+set statusline+=%{SyntasticStatuslineFlag()}
+set statusline+=%*
+
+" check syntax on save w/ syntastic
+" let g:syntastic_check_on_open=1
+" let g:syntastic_json_checkers=['jsonlint']
 
 filetype plugin on
 
@@ -32,7 +40,7 @@ filetype plugin on
 autocmd BufWritePost $HOME/.vimrc source $HOME/.vimrc
 
 " Treat JSON files like JavaScript
-" autocmd BufNewFile,BufRead *.json set ft=javascript
+autocmd BufNewFile,BufRead *.json set ft=javascript
 
 " use visual bell instead of beeping
 set vb
@@ -72,7 +80,8 @@ nmap <s-tab> ^i<bs><esc>
 set pastetoggle=<F11>
 set diffopt+=iwhite
 " colorscheme
-colorscheme ir_black
+" colorscheme ir_black
+colorscheme cobaltish
 
 set laststatus=2
 let g:Powerline_symbols = 'fancy'
@@ -88,3 +97,5 @@ if system("uname") == "Darwin\n"
   set clipboard=unnamed
 endif
 
+" save on focus loss
+autocmd BufLeave,FocusLost * silent! wall
