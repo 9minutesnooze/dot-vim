@@ -16,12 +16,9 @@ set expandtab
 set tabstop=2
 set shiftwidth=2
 set shiftround                    "Indent/outdent to nearest tabstop
-
 set matchpairs+=<:>               "Allow % to bounce between angles too
-
 set iskeyword+=:                  "Perl double colons are valid part of
                                   "identifiers.
-
 " set columns=85
 " set number
 
@@ -29,10 +26,6 @@ set statusline=%<%f%h%m%r%=%{&ff}\ %l,%c%V\ %P
 set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
-
-" check syntax on save w/ syntastic
-" let g:syntastic_check_on_open=1
-" let g:syntastic_json_checkers=['jsonlint']
 
 filetype plugin on
 
@@ -48,9 +41,6 @@ set vb
 " incremental search
 set incsearch
 
-" syntax highlighting
-" set bg=light
-
 " autoindent
 autocmd FileType perl set autoindent|set smartindent
 autocmd FileType ruby set autoindent|set smartindent
@@ -58,11 +48,6 @@ autocmd FileType ruby set autoindent|set smartindent
 " show matching brackets
 autocmd FileType perl set showmatch
 autocmd FileType ruby set showmatch
-
-" check perl code with :make
-"autocmd FileType perl set makeprg=perl\ -c\ %\ $*
-"autocmd FileType perl set errorformat=%f:%l:%m
-"autocmd FileType perl set autowrite
 
 " dont use Q for Ex mode
 map Q :q
@@ -79,12 +64,10 @@ nmap <s-tab> ^i<bs><esc>
 " cut or copy some text from one window and paste it in Vim.
 set pastetoggle=<F11>
 set diffopt+=iwhite
-" colorscheme
 colorscheme ir_black
 " colorscheme cobaltish
 
 set laststatus=2
-let g:Powerline_symbols = 'fancy'
 
 if version > 702
   set listchars=tab:»·,trail:·
@@ -105,3 +88,5 @@ set runtimepath^=~/.vim/bundle/ctrlp.vim
 if !empty(matchstr($MY_RUBY_HOME, 'jruby'))
   let g:ruby_path = join(split(glob($MY_RUBY_HOME.'/lib/ruby/*.*')."\n".glob($MY_RUBY_HOME.'/lib/rubysite_ruby/*'),"\n"),',')
 endif
+
+let g:airline_theme='dark' 
