@@ -99,3 +99,9 @@ endif
 
 " save on focus loss
 autocmd BufLeave,FocusLost * silent! wall
+
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+
+if !empty(matchstr($MY_RUBY_HOME, 'jruby'))
+  let g:ruby_path = join(split(glob($MY_RUBY_HOME.'/lib/ruby/*.*')."\n".glob($MY_RUBY_HOME.'/lib/rubysite_ruby/*'),"\n"),',')
+endif
