@@ -4,28 +4,15 @@ set nu "Absolute line numbers
 set cindent
 set autoindent
 set cursorline
-"set cursorcolumn
-
 set background=dark
-
 set autoindent                    "Preserve current indent on new lines
-" set textwidth=78                  "Wrap at this column
 set backspace=indent,eol,start    "Make backspaces delete sensibly
-
 set expandtab
 set tabstop=2
 set shiftwidth=2
 set shiftround                    "Indent/outdent to nearest tabstop
 set matchpairs+=<:>               "Allow % to bounce between angles too
-set iskeyword+=:                  "Perl double colons are valid part of
-                                  "identifiers.
-" set columns=85
-" set number
-
-set statusline=%<%f%h%m%r%=%{&ff}\ %l,%c%V\ %P
-set statusline+=%#warningmsg#
-set statusline+=%{SyntasticStatuslineFlag()}
-set statusline+=%*
+set iskeyword+=:                  "Perl double colons are valid part of identifiers.
 
 filetype plugin on
 
@@ -49,6 +36,15 @@ autocmd FileType ruby set autoindent|set smartindent
 autocmd FileType perl set showmatch
 autocmd FileType ruby set showmatch
 
+" Ruby is an oddball in the family, use special spacing/rules
+if v:version >= 703
+  " Note: Relative number is quite slow with Ruby, so is cursorline
+  autocmd FileType ruby setlocal ts=2 sts=2 sw=2 norelativenumber nocursorline
+else
+  autocmd FileType ruby setlocal ts=2 sts=2 sw=2
+endif
+
+
 " dont use Q for Ex mode
 map Q :q
 
@@ -65,8 +61,10 @@ nmap <s-tab> ^i<bs><esc>
 set pastetoggle=<F11>
 set diffopt+=iwhite
 colorscheme ir_black
-" colorscheme cobaltish
+set guifont=Monaco:h14
+let g:airline_theme='dark'
 
+" always show the status bar
 set laststatus=2
 
 if version > 702
@@ -74,11 +72,9 @@ if version > 702
 endif
 set list
 
-set guifont=Monaco:h14
-
-if system("uname") == "Darwin\n"
-  set clipboard=unnamed
-endif
+" if system("uname") == "Darwin\n"
+"   set clipboard=unnamed
+" endif
 
 " save on focus loss
 autocmd BufLeave,FocusLost * silent! wall
@@ -89,4 +85,3 @@ if !empty(matchstr($MY_RUBY_HOME, 'jruby'))
   let g:ruby_path = join(split(glob($MY_RUBY_HOME.'/lib/ruby/*.*')."\n".glob($MY_RUBY_HOME.'/lib/rubysite_ruby/*'),"\n"),',')
 endif
 
-let g:airline_theme='dark' 
