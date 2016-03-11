@@ -61,7 +61,7 @@ nmap <s-tab> ^i<bs><esc>
 set pastetoggle=<F11>
 set diffopt+=iwhite
 colorscheme ir_black
-set guifont=Monaco:h14
+set guifont=Hack:h18
 let g:airline_theme='dark'
 
 " always show the status bar
