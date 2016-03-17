@@ -1,4 +1,5 @@
 call pathogen#infect()
+call pathogen#helptags()
 syntax on
 set nu "Absolute line numbers
 set cindent
