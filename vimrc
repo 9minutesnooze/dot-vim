@@ -86,3 +86,6 @@ if !empty(matchstr($MY_RUBY_HOME, 'jruby'))
   let g:ruby_path = join(split(glob($MY_RUBY_HOME.'/lib/ruby/*.*')."\n".glob($MY_RUBY_HOME.'/lib/rubysite_ruby/*'),"\n"),',')
 endif
 
+set swapfile
+set dir=~/.vim/swp//
+set backupdir=~/.vim/backup//
