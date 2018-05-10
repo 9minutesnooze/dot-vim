@@ -17,7 +17,7 @@ set shiftround                    "Indent/outdent to nearest tabstop
 set matchpairs+=<:>               "Allow % to bounce between angles too
 set iskeyword+=:                  "Perl double colons are valid part of identifiers.
 set rtp+=/usr/local/opt/fzf
-"set runtimepath^=~/.vim/bundle/ctrlp.vim
+set runtimepath^=~/.vim/bundle/ctrlp.vim
 
 filetype plugin on
 
@@ -92,11 +92,14 @@ nmap <s-tab> ^i<bs><esc>
 set pastetoggle=<F11>
 set diffopt+=iwhite
 
+"map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>:colorscheme ( &background == "dark"? "solarized" : "molokai" )<CR>
+
 if has('gui_running')
-  colorscheme solarized
-  set background=light
+"  colorscheme solarized
+"  set background=light
+  colorscheme molokai
   set nomacligatures
-  set guifont=Fira\ Code\ Retina:h15
+  set guifont=Fira\ Code\ Retina:h14
 "  set guifont=Hack:h15
 else
   colorscheme ir_black
@@ -128,6 +131,32 @@ set swapfile
 set dir=~/.vim/swp//
 set backupdir=~/.vim/backup//
 set colorcolumn=80 "show a line at column 80
-
 let g:vim_markdown_toc_autofit = 1
 let g:vim_markdown_folding_disabled = 1
+
+function! SetOutsideMode()
+  colorscheme solarized
+  set bg=light
+endfunction
+
+function! SetInsideMode()
+  colorscheme molokai
+  set bg=dark
+endfunction
+
+function! ToggleDisplayMode()
+  if !exists('w:outside_mode')
+    let w:outside_mode = 0
+  endif
+
+  if w:outside_mode == 0
+    call SetOutsideMode()
+    let w:outside_mode = 1
+  else
+    call SetInsideMode()
+    let w:outside_mode = 0
+  endif
+endfunction
+
+nnoremap <leader>bg :call ToggleDisplayMode()<cr>
+
