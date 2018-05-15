@@ -160,3 +160,10 @@ endfunction
 
 nnoremap <leader>bg :call ToggleDisplayMode()<cr>
 
+" Ack.vim
+if executable('rg')
+  let g:ackprg = 'rg --vimgrep --no-heading'
+endif
+
+
+nnoremap <leader>rg :Ack<cr>
