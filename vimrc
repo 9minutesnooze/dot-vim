@@ -1,3 +1,9 @@
+" avoid deprecation warnings from popping up in YCM
+" https://github.com/vim/vim/issues/3117#issuecomment-402622616
+if has('python3')
+  silent! python3 1
+endif
+
 call pathogen#infect()
 call pathogen#helptags()
 syntax on
@@ -16,8 +22,18 @@ set shiftwidth=2
 set shiftround                    "Indent/outdent to nearest tabstop
 set matchpairs+=<:>               "Allow % to bounce between angles too
 set iskeyword+=:                  "Perl double colons are valid part of identifiers.
-set rtp+=/usr/local/opt/fzf
+set rtp+=/usr/local/bin/fzf
 set runtimepath^=~/.vim/bundle/ctrlp.vim
+set wildignore+=*/.git/*,*.swp
+set swapfile
+set dir=~/.vim/swp//
+set backupdir=~/.vim/backup//
+set colorcolumn=80 "show a line at column 80
+
+" paste mode - this will avoid unexpected effects when you
+" cut or copy some text from one window and paste it in Vim.
+set pastetoggle=<F11>
+set diffopt+=iwhite
 
 filetype plugin on
 
@@ -40,11 +56,10 @@ let g:go_highlight_build_constraints = 1
 let g:syntastic_go_checkers = ['golint', 'govet', 'errcheck']
 let g:syntastic_mode_map = { 'mode': 'active', 'passive_filetypes': ['go'] }
 let g:go_fmt_command = 'goimports'
-" let YouCompleteMe handle <leader>gd
 let go_def_mapping_enabled = 0
-"let g:ctrlp_use_caching = 1000
 
 " YouCompleteMe
+" let YouCompleteMe handle <leader>gd
 nnoremap <leader>gd :YcmCompleter GoTo<CR>
 let g:ycm_goto_buffer_command = 'new-tab'
 
@@ -87,20 +102,13 @@ vmap <s-tab> <gv
 nmap <tab> I<tab><esc>
 nmap <s-tab> ^i<bs><esc>
 
-" paste mode - this will avoid unexpected effects when you
-" cut or copy some text from one window and paste it in Vim.
-set pastetoggle=<F11>
-set diffopt+=iwhite
-
-"map <Leader>bg :let &background = ( &background == "dark"? "light" : "dark" )<CR>:colorscheme ( &background == "dark"? "solarized" : "molokai" )<CR>
-
 if has('gui_running')
 "  colorscheme solarized
 "  set background=light
   colorscheme molokai
   set nomacligatures
   set guifont=Fira\ Code\ Retina:h14
-"  set guifont=Hack:h15
+"  set guifont=Hack:h14
 else
   colorscheme ir_black
   set background=dark
@@ -127,10 +135,6 @@ if !empty(matchstr($MY_RUBY_HOME, 'jruby'))
   let g:ruby_path = join(split(glob($MY_RUBY_HOME.'/lib/ruby/*.*')."\n".glob($MY_RUBY_HOME.'/lib/rubysite_ruby/*'),"\n"),',')
 endif
 
-set swapfile
-set dir=~/.vim/swp//
-set backupdir=~/.vim/backup//
-set colorcolumn=80 "show a line at column 80
 let g:vim_markdown_toc_autofit = 1
 let g:vim_markdown_folding_disabled = 1
 
@@ -158,12 +162,15 @@ function! ToggleDisplayMode()
   endif
 endfunction
 
+" toggle background w/ \bg
 nnoremap <leader>bg :call ToggleDisplayMode()<cr>
 
-" Ack.vim
-if executable('rg')
-  let g:ackprg = 'rg --vimgrep --no-heading'
+if executable('/usr/local/bin/rg')
+  let g:ackprg = '/usr/local/bin/rg --vimgrep --no-heading'
+  set grepprg=/usr/local/bin/rg\ --color=never
+  let g:ctrlp_user_command = '/usr/local/bin/rg %s --files --color=never --glob ""'
+  let g:ctrlp_use_caching = 0
 endif
 
-
+" ripgrep for word under cursor
 nnoremap <leader>rg :Ack<cr>
